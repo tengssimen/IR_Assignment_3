@@ -18,7 +18,7 @@ def main():
   par_copy = copy.copy(paragraphs)
 
   paragraphs = functions.tokenize(paragraphs)
-  paragraphs = functions.rem_pun(paragraphs)
+  paragraphs = functions.remove_punctuation(paragraphs)
   paragraphs = functions.stem(paragraphs)
 
   return par_copy, paragraphs

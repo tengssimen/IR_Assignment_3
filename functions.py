@@ -4,7 +4,6 @@ import codecs
 
 stemmer = PorterStemmer()
 
-
 def remove_specific_word(word, strings):
 
   for s in strings:
@@ -18,14 +17,14 @@ def tokenize(pars):
     
   return pars
 
-def rem_pun(pars):
+def remove_punctuation(pars):
   # takes in a two dimentianal array
   for i, word_list in enumerate(pars):
-    words = remove_punctuations_single(word_list)
+    words = remove_punctuation_single(word_list)
     pars[i] = words
   return pars
 
-def remove_punctuations_single(word_list):
+def remove_punctuation_single(word_list):
 
     words = []
     for word in word_list:
@@ -40,7 +39,6 @@ def remove_punctuations_single(word_list):
         if w != "":
             words.append(w.lower())
     return words
-
 
 def get_stop_words(f):
   
@@ -62,6 +60,10 @@ def makeParagraphArray(f):
           continue
       paragraph += line
   return paragraphs
+
+def split_to_paragraphs(text):
+  text = text.split('\r\n\r\n') # Split into seperate paragraphs
+  return [p for p in text if p]
 
 
 def stem(paragraphs):
@@ -93,7 +95,7 @@ def get_stop_wordids(stop_words, dictionary):
 def process(q):
   # Removes punctuation and tokenizes query
   q = q.split(" ")
-  q = remove_punctuations_single(q)
+  q = remove_punctuation_single(q)
   q = stem_list(q)
   return q
 
@@ -102,7 +104,3 @@ def make_bags_of_words(stemmed_pars, dictionary):
   for i in stemmed_pars:
     bags.append(dictionary.doc2bow(i))
   return bags
-
-
-
-  

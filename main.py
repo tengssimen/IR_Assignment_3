@@ -1,5 +1,7 @@
 import task_1
 import task_2
+import task_3
+import task_4
 
 def main():
 
@@ -20,8 +22,14 @@ def main():
   #task 2
   bags, dictionary = task_2.main(stemmed_pars)
 
-  for i in bags:
-    print(i)
+  #for i in bags:
+    #print(i)
+
+  #task_3
+  tfidf_model, tfidf_corpus, matrix_sim, lsi_matrix, lsi_model = task_3.main(bags, dictionary)
+
+  #task_4
+  task_4.main(dictionary, tfidf_model, tfidf_corpus, matrix_sim, lsi_matrix, lsi_model, pars)
 
 if __name__ == "__main__":
     main()

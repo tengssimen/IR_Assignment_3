@@ -5,8 +5,6 @@ stopwords_file = "./stopwords.txt"
 
 def main(stemmed_pars):
 
-  words = []
-
   #Reads the stop-words from file
   f = codecs.open(stopwords_file, "r", "utf-8")
   #Puts the stop words in list
