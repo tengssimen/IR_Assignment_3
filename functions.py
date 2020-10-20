@@ -61,10 +61,6 @@ def makeParagraphArray(f):
       paragraph += line
   return paragraphs
 
-def split_to_paragraphs(text):
-  text = text.split('\r\n\r\n') # Split into seperate paragraphs
-  return [p for p in text if p]
-
 
 def stem(paragraphs):
 

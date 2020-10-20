@@ -25,24 +25,23 @@ def main(dictionary, tfidf_model, tfidf_corpus, matrix_sim, lsi_matrix, lsi_mode
   print("\n" + "[paragraph " + str(docs[2][0]) + "]")
   print(paragraphs[docs[2][0]])
   
-
-  #Compare
+  #Compare TF-IDF representation for the query with LSI-topic representation
+  print("Comparing TF-IDF representation for the query with LSI-topic representation:\n")
+  
   lsi_query = lsi_model[q]
   topics = sorted(lsi_query, key=lambda kv: -abs(kv[1]))[:3]
 
   for topic in enumerate(topics):
-    t = topic[1][0]
-    print("\n[Topic " + t.__str__() + "]")
-    print(lsi_model.show_topics()[t])
+    top = topic[1][0]
+    print("\n[Topic #" + str(top) + "]")
+    print(lsi_model.show_topics()[top])
       
-  docsim = enumerate(lsi_matrix[lsi_query])
-  docs = sorted(docsim, key=lambda kv: -kv[1])[:3]
-  for doc in docs:
-    p = doc[0]
-    print("\n[Paragraph " + p.__str__() + "]")
-    print(paragraphs[p])
-  
-  return "yo"
+  doc2similarity= enumerate(lsi_matrix[lsi_query])
+  docs = sorted(doc2similarity, key=lambda kv: -kv[1])[:3]
+  for document in docs:
+    d = document[0]
+    print("\n[Paragraph #" + str(d) + "]")
+    print(paragraphs[d])
 
 
 
